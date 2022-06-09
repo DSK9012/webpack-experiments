@@ -1,2 +1,2 @@
-console.log(x);
+import helloWorld from './hello-world';
 helloWorld();

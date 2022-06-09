@@ -1,5 +1,6 @@
-var x=101;
-helloWorld();
 function helloWorld(){
-  console.log('Hello World');
+  console.log('Hello World 143');
+
 }
+
+export default helloWorld;
