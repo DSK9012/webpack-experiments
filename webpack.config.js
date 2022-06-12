@@ -5,7 +5,7 @@ module.exports={
   output:{
     filename:'bundle.js',
     path:path.resolve(__dirname, './dist'),
-    publicPath:'dist/'
+    publicPath:'dist/static/media/'
   },
   mode:'production',
   module:{
@@ -13,6 +13,9 @@ module.exports={
       {
         test:/\.(jpg|png)$/,
         type:'asset',
+        generator:{
+          filename:'static/media/[name]-[hash][ext]'
+        },
         parser:{
           dataUrlCondition:{
             maxSize: 8*1024 // 8 kb
