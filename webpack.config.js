@@ -1,11 +1,12 @@
 const path=require('path');
+const MiniCssExtractPlugin=require('mini-css-extract-plugin');
 
 module.exports={
   entry:'./src/index.js',
   output:{
     filename:'bundle.js',
     path:path.resolve(__dirname, './dist'),
-    publicPath:'dist/static/media/'
+    publicPath:'dist/'
   },
   mode:'production',
   module:{
@@ -28,11 +29,11 @@ module.exports={
       },
       {
         test:/\.css/,
-        use:['style-loader', 'css-loader']
+        use:[MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test:/\.scss/,
-        use:['style-loader', 'css-loader', 'sass-loader']
+        use:[MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test:/\.js$/,
@@ -45,5 +46,10 @@ module.exports={
         }
       }
     ]
-  }
+  },
+  plugins:[
+    new MiniCssExtractPlugin({
+      filename:'styles.[contenthash].css'
+    })
+  ]
 }
