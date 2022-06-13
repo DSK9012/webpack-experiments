@@ -1,12 +1,13 @@
 const path=require('path');
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
+const { CleanWebpackPlugin }=require('clean-webpack-plugin');
+const HtmlWebpackPlugin=require('html-webpack-plugin'); 
 
 module.exports={
   entry:'./src/index.js',
   output:{
     filename:'bundle.js',
     path:path.resolve(__dirname, './dist'),
-    publicPath:'dist/'
   },
   mode:'production',
   module:{
@@ -44,12 +45,21 @@ module.exports={
             presets:['@babel/env'],
           }
         }
+      },
+      {
+        test:/\.hbs$/,
+        use:['handlebars-loader']
       }
     ]
   },
   plugins:[
     new MiniCssExtractPlugin({
       filename:'styles.[contenthash].css'
+    }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title:'Webpack Experiments',
+      template:'index.hbs'
     })
   ]
 }
