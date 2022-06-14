@@ -1,21 +1,21 @@
 import helloWorld from './hello-world';
-import book from './java_book.jpg';
 import altText from './alt_name.txt';
+import book from './java_book.jpg';
+import book1 from '../opened-book.jpg';
 import '../styles.scss'; 
 
-console.log('Sample Webpack Config');
 helloWorld();
 
 class AddImage{
-  x='altText';
-  render(){
+  x=altText;
+  render(bk){
     const z=()=>{
       console.log("" ?? 1);
     }
     z();
     const img=document.createElement('img');
     img.width='200';
-    img.src=book;
+    img.src=bk;
     img.alt=this.x;
     const body=document.querySelector('body');
     body.appendChild(img);
@@ -23,4 +23,5 @@ class AddImage{
 }
 
 const y=new AddImage();
-y.render();
+y.render(book);
+y.render(book1);
