@@ -4,12 +4,21 @@ const { CleanWebpackPlugin }=require('clean-webpack-plugin');
 const HtmlWebpackPlugin=require('html-webpack-plugin'); 
 
 module.exports={
-  entry:'./src/index.js',
+  entry:{
+    'start-page':'./src/index.js',
+    'render-image':'./src/hello-world.js'
+  },
   output:{
-    filename:'bundle.[contenthash].js',
+    filename:'[name].[contenthash].js',
     path:path.resolve(__dirname, './dist'),
   },
   mode:'production',
+  optimization:{
+    splitChunks:{
+      chunks:'all',
+      minSize:3000
+    }
+  },
   module:{
     rules:[
       {
@@ -54,12 +63,20 @@ module.exports={
   },
   plugins:[
     new MiniCssExtractPlugin({
-      filename:'styles.[contenthash].css'
+      filename:'[name].[contenthash].css'
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      filename:'start-page.html',
       title:'Webpack Experiments',
-      template:'index.hbs'
+      template:'index.hbs',
+      chunks:['start-page'],
+    }),
+    new HtmlWebpackPlugin({
+      filename:'render-image.html',
+      title:'Webpack Experiments',
+      template:'index.hbs',
+      chunks:['render-image'],
     })
   ]
 }

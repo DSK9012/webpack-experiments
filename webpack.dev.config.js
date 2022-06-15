@@ -3,9 +3,12 @@ const { CleanWebpackPlugin }=require('clean-webpack-plugin');
 const HtmlWebpackPlugin=require('html-webpack-plugin'); 
 
 module.exports={
-  entry:'./src/index.js',
+  entry:{
+    'start-page':'./src/index.js',
+    'render-image':'./src/hello-world.js'
+  },
   output:{ 
-    filename:'bundle.js',
+    filename:'[name].bundle.js',
     path:path.resolve(__dirname, './dist'),
   },
   mode:'development',
@@ -64,8 +67,17 @@ module.exports={
   plugins:[
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      filename:'start-page.html',
       title:'Webpack Experiments',
-      template:'index.hbs'
+      template:'index.hbs',
+      chunks:['start-page'],
+      minify:false
+    }),
+    new HtmlWebpackPlugin({
+      filename:'render-image.html',
+      title:'Webpack Experiments',
+      template:'index.hbs',
+      chunks:['render-image'],
     })
   ]
 }
