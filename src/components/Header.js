@@ -1,5 +1,4 @@
-
-class Header{
+export default class Header{
   render(name){
     const header=document.createElement('h1');
     header.textContent=name;
@@ -7,7 +6,3 @@ class Header{
     body.appendChild(header);
   }
 }
-
-const z=new Header();
-
-export default z;

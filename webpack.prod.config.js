@@ -5,8 +5,8 @@ const HtmlWebpackPlugin=require('html-webpack-plugin');
 
 module.exports={
   entry:{
-    'start-page':'./src/index.js',
-    'render-image':'./src/hello-world.js'
+    'first-page':'./src/first-page.js',
+    'second-page':'./src/second-page.js'
   },
   output:{
     filename:'[name].[contenthash].js',
@@ -68,16 +68,16 @@ module.exports={
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename:'start-page.html',
+      filename:'first-page.html',
       title:'Webpack Experiments',
-      template:'index.hbs',
-      chunks:['start-page'],
+      template:'./src/html-template/index.hbs',
+      chunks:['first-page'],
     }),
     new HtmlWebpackPlugin({
-      filename:'render-image.html',
+      filename:'second-page.html',
       title:'Webpack Experiments',
-      template:'index.hbs',
-      chunks:['render-image'],
+      template:'./src/html-template/index.hbs',
+      chunks:['second-page'],
     })
   ]
 }
