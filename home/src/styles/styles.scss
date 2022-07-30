@@ -1,0 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+}
+
+.navbar{
+  background-color: rgb(26, 97, 97);
+  padding: 10px 24px;
+  ul{
+    list-style: none;
+    display: block;
+    li{
+      display: inline-block;
+      padding: 0 10px;
+      a{
+        text-decoration: none;
+        color: white;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
